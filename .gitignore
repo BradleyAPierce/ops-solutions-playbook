@@ -1,0 +1,106 @@
+# Common .gitignore for macOS, editors, languages and build artifacts
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Icon
+
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Dependency directories
+node_modules/
+jspm_packages/
+bower_components/
+
+# Build / output
+dist/
+build/
+out/
+target/
+.tmp/
+.temp/
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+.venv/
+venv/
+ENV/
+env/
+
+# Virtual environment and env files
+.env
+.env.*.local
+*.local
+
+# Editor directories and files
+.vscode/
+.idea/
+*.iml
+*.sublime-project
+*.sublime-workspace
+*~
+*.swp
+
+# IDE / Editor history
+.history/
+
+# Coverage
+coverage/
+.coverage
+coverage.xml
+*.lcov
+
+# OS generated files
+*.DS_Store
+*.AppleDouble
+
+# Archives and packages
+*.zip
+*.tar.gz
+*.rar
+*.7z
+
+# Certificates and keys
+*.pem
+*.crt
+*.key
+
+# Terraform
+*.tfstate
+*.tfstate.*
+.terraform/
+crash.log
+override.tf
+override.tf.json
+*.tfvars
+
+# Kubernetes
+.kube/
+.kubeconfig
+
+# Go binaries and build artifacts
+bin/
+*.exe
+*.dll
+*.so
+*.dylib
+
+# Misc
+npm-debug.log
+yarn-error.log
+
+# Keep this file updated to suit your project's needs
