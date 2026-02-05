@@ -1,0 +1,79 @@
+/**
+ * Banner Fix CSS
+ * Fixes hero banner positioning after WordPress inline style removal
+ * 
+ * ISSUE: Original WordPress exports had inline styles:
+ *   - background-image: url(...) on .slides div
+ *   - display: none on .bg-img
+ * 
+ * These inline styles were removed during refactoring, breaking banner layout.
+ * This file restores proper banner functionality.
+ */
+
+/* Hero Banner Container */
+.inherobanner {
+  position: relative;
+  overflow: hidden;
+}
+
+/* Banner Slides Container */
+.heroslides .slides {
+  position: relative;
+  min-height: 400px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+/* Background Image - Use as actual background */
+.heroslides .slides .bg-img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 1;
+}
+
+/* Caption Overlay */
+.heroslides .caption {
+  position: relative;
+  z-index: 2;
+  color: #fff;
+  text-align: left;
+  padding: 40px 20px;
+}
+
+.heroslides .caption.hasrelative {
+  position: relative;
+}
+
+/* Caption Text Styling */
+.heroslides .caption h1 {
+  color: #fff;
+  font-size: 48px;
+  font-weight: 700;
+  margin-bottom: 20px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.heroslides .caption .small-hr {
+  width: 80px;
+  border-color: #fff;
+  margin: 20px 0;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .heroslides .slides {
+    min-height: 300px;
+  }
+
+  .heroslides .caption h1 {
+    font-size: 32px;
+  }
+}

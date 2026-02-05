@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Example: Custom Header - Konica Minolta</title>
+    <meta name="robots" content="max-image-preview:large" />
+
+    <!-- Favicons -->
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="/assets/images/icons/favicon-32x32.png" />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="/assets/images/icons/favicon-16x16.png" />
+
+    <!-- Global CSS - Vendor -->
+    <link rel="stylesheet" href="/assets/css/vendor/bootstrap.min.css" />
+    <link rel="stylesheet" href="/assets/css/vendor/plugin.css" />
+    <link rel="stylesheet" href="/assets/css/vendor/utilities.css" />
+    <link rel="stylesheet" href="/assets/css/vendor/vendor.css" />
+
+    <!-- Global CSS - Core -->
+    <link rel="stylesheet" href="/assets/css/vendor/style.css" />
+    <link rel="stylesheet" href="/assets/css/core/wordpress-extracted.css" />
+    <link rel="stylesheet" href="/assets/css/core/banner-fix.css" />
+  </head>
+
+  <body class="default">
+    <!-- 🎨 CUSTOM HEADER: Using data-logo attribute to change the logo for this page only -->
+    <!-- Remove or change these attributes to customize -->
+    <div
+      id="header-container"
+      data-logo="/assets/images/logos/logo.svg"
+      data-subtitle="/assets/images/content/giving-shapes-subtitle.svg"></div>
+
+    <!-- Global Navigation Component -->
+    <div id="nav-container"></div>
+
+    <!-- Page-Specific Content -->
+    <div class="animsition">
+      <div class="page">
+        <section class="container" style="padding: 60px 0">
+          <div class="row">
+            <div class="col-md-12">
+              <h1>Example Page with Custom Header</h1>
+              <p class="lead">
+                This demonstrates how to customize the header logo per page
+                using data attributes.
+              </p>
+
+              <hr style="margin: 40px 0" />
+
+              <h2>How This Works</h2>
+              <ol>
+                <li>
+                  The <code>&lt;div id="header-container"&gt;</code> has
+                  <code>data-logo</code> and
+                  <code>data-subtitle</code> attributes
+                </li>
+                <li>
+                  The component loader fetches
+                  <code>/components/header.html</code>
+                </li>
+                <li>After loading, it checks for data attributes</li>
+                <li>If found, it swaps the image src to your custom path</li>
+              </ol>
+
+              <h3>Example Code</h3>
+              <pre><code>&lt;!-- Default header (uses header.html default images) --&gt;
+&lt;div id="header-container"&gt;&lt;/div&gt;
+
+&lt;!-- Custom logo for Healthcare section --&gt;
+&lt;div id="header-container" 
+     data-logo="/assets/images/logos/healthcare-logo.svg"&gt;
+&lt;/div&gt;
+
+&lt;!-- Custom logo AND subtitle for Finance section --&gt;
+&lt;div id="header-container" 
+     data-logo="/assets/images/logos/finance-logo.svg"
+     data-subtitle="/assets/images/content/finance-subtitle.svg"&gt;
+&lt;/div&gt;</code></pre>
+
+              <h3>Benefits</h3>
+              <ul>
+                <li>
+                  ✅ One shared <code>header.html</code> component for all 40
+                  pages
+                </li>
+                <li>
+                  ✅ Easy per-page customization with just data attributes
+                </li>
+                <li>✅ No need to duplicate header HTML</li>
+                <li>
+                  ✅ Global header changes (structure, search, etc.) update all
+                  pages automatically
+                </li>
+              </ul>
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
+
+    <!-- Global Footer Component -->
+    <div id="footer-container"></div>
+
+    <!-- Global JS - Vendor -->
+    <script src="/assets/js/vendor/jquery.min.js"></script>
+    <script src="/assets/js/vendor/jquery-migrate.min.js"></script>
+    <script src="/assets/js/vendor/bootstrap.min.js"></script>
+    <script src="/assets/js/vendor/plugin.js"></script>
+    <script src="/assets/js/vendor/vendor.js"></script>
+
+    <!-- Component Loader - Must load AFTER all vendor scripts -->
+    <script src="/assets/js/component-loader.js"></script>
+  </body>
+</html>
