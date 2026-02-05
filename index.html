@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="refresh" content="0; url=/pages/index.html" />
+    <title>Loading - Konica Minolta Software Solutions</title>
+
+    <!-- Favicons -->
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="/assets/images/icons/favicon-32x32.png" />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="/assets/images/icons/favicon-16x16.png" />
+
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family:
+          -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+          "Helvetica Neue", Arial, sans-serif;
+        background: linear-gradient(135deg, #8b9f87 0%, #6d7f69 100%);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        color: #fff;
+      }
+
+      .loader-container {
+        text-align: center;
+        padding: 2rem;
+      }
+
+      .spinner {
+        width: 50px;
+        height: 50px;
+        margin: 0 auto 1.5rem;
+        border: 4px solid rgba(255, 255, 255, 0.3);
+        border-top-color: #fff;
+        border-radius: 50%;
+        animation: spin 0.8s linear infinite;
+      }
+
+      @keyframes spin {
+        to {
+          transform: rotate(360deg);
+        }
+      }
+
+      h1 {
+        font-size: 1.5rem;
+        font-weight: 400;
+        margin-bottom: 0.5rem;
+        opacity: 0.95;
+      }
+
+      p {
+        font-size: 0.95rem;
+        opacity: 0.8;
+        margin-bottom: 1rem;
+      }
+
+      a {
+        color: #fff;
+        text-decoration: underline;
+        opacity: 0.9;
+        transition: opacity 0.2s;
+      }
+
+      a:hover {
+        opacity: 1;
+      }
+
+      .fade-in {
+        animation: fadeIn 0.3s ease-in;
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(-10px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+    </style>
+
+    <script>
+      // Immediate redirect
+      window.location.href = "/pages/index.html";
+    </script>
+  </head>
+  <body>
+    <div class="loader-container fade-in">
+      <div class="spinner"></div>
+      <h1>Konica Minolta</h1>
+      <p>Loading Software Solutions Portfolio...</p>
+      <p>
+        <a href="/pages/index.html"
+          >Click here if not redirected automatically</a
+        >
+      </p>
+    </div>
+  </body>
+</html>
