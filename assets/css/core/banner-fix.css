@@ -8,6 +8,29 @@
  * This file ensures the .slides container displays correctly with that approach.
  */
 
+/*
+ * Prevent layout shift from dynamically loaded components.
+ * These reserve space so content doesn't jump when header/nav load.
+ */
+#header-container {
+  min-height: 70px;
+}
+
+#nav-container {
+  min-height: 50px;
+  background-color: #039eb6;
+}
+
+/*
+ * Prevent banner flash. Owl Carousel sets .owl-carousel to display:none,
+ * then switches to display:block when JS adds .owl-loaded.
+ * This override keeps the banner visible immediately so it doesn't pop in.
+ */
+.inherobanner .heroslides.owl-carousel,
+.herobanner .heroslides.owl-carousel {
+  display: block;
+}
+
 /* Hero Banner Container */
 .inherobanner {
   position: relative;
