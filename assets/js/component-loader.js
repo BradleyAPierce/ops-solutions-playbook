@@ -70,12 +70,19 @@
   }
 
   function initComponents() {
-    // Detect if we need relative paths based on URL depth
-    const pathDepth =
-      window.location.pathname
-        .split("/")
-        .filter((p) => p && !p.endsWith(".html")).length - 1;
-    const basePath = pathDepth > 0 ? "../".repeat(pathDepth) : "";
+    // Check if base tag exists (GitHub Pages) - if so, use base-relative paths
+    const baseTag = document.querySelector("base");
+    let basePath = "";
+
+    if (!baseTag) {
+      // Local dev: calculate relative path based on directory depth
+      const pathDepth =
+        window.location.pathname
+          .split("/")
+          .filter((p) => p && !p.endsWith(".html")).length - 1;
+      basePath = pathDepth > 0 ? "../".repeat(pathDepth) : "";
+    }
+    // else: base tag exists, use base-relative paths (basePath stays empty)
 
     loadComponent("header-container", `${basePath}components/header.html`);
     loadComponent("nav-container", `${basePath}components/nav.html`);
