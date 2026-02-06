@@ -1,13 +1,11 @@
 /**
  * Banner Fix CSS
- * Fixes hero banner positioning after WordPress inline style removal
- * 
- * ISSUE: Original WordPress exports had inline styles:
- *   - background-image: url(...) on .slides div
- *   - display: none on .bg-img
- * 
- * These inline styles were removed during refactoring, breaking banner layout.
- * This file restores proper banner functionality.
+ * Fixes hero banner display after WordPress export cleanup.
+ *
+ * The setbg() function in vendor.js handles the background image:
+ *   - Takes .bg-img src and sets it as background-image on .slides
+ *   - Hides the .bg-img element
+ * This file ensures the .slides container displays correctly with that approach.
  */
 
 /* Hero Banner Container */
@@ -16,19 +14,20 @@
   overflow: hidden;
 }
 
-/* Banner Slides Container */
+/* Banner Slides Container - background-image is set by setbg() in vendor.js */
 .heroslides .slides {
   position: relative;
-  min-height: 400px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
 }
 
-/* Background Image - Use as actual background */
+/*
+ * Fallback positioning for all banners.
+ * If setbg() runs, it hides .bg-img and these are irrelevant.
+ * If setbg() hasn't run yet (or fails), these keep the caption
+ * overlaid on the image instead of pushed below it.
+ */
 .heroslides .slides .bg-img {
   position: absolute;
   top: 0;
@@ -39,41 +38,111 @@
   z-index: 1;
 }
 
-/* Caption Overlay */
-.heroslides .caption {
+.heroslides .caption,
+.heroslides .container-fluid.hasrelative {
   position: relative;
   z-index: 2;
-  color: #fff;
-  text-align: left;
-  padding: 40px 20px;
 }
 
-.heroslides .caption.hasrelative {
+/*
+ * The following styles are missing from vendor.css for .inherobanner.
+ * They exist for .herobanner (the original WordPress class) but the pages
+ * were refactored to use .inherobanner, which only has h1/caption styles.
+ * Adapted here with colors for the dark-overlay variant (white text).
+ */
+
+/* h2 "solutions" label */
+.inherobanner .caption h2 {
+  font-size: 3.68em;
+  color: #039eb6;
+  text-transform: uppercase;
+  font-weight: bold;
+  padding: 1em 0 0.8em 0;
+  line-height: 0.8;
+}
+
+/* h3 "Business Value" label with underline */
+.inherobanner .caption h3 {
+  font-size: 2.5em;
+  color: #fff;
+  text-transform: uppercase;
+  font-weight: 500;
+  margin-bottom: 0.2em;
+  line-height: 0.9;
   position: relative;
+  padding-bottom: 0.5em;
+  display: inline-block;
 }
 
-/* Caption Text Styling */
-.heroslides .caption h1 {
+.inherobanner .caption h3::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  height: 4px;
+  background-color: #039eb6;
+  width: 100%;
+  bottom: 0;
+}
+
+/* Icon list */
+.inherobanner .caption ul {
+  margin: 0;
+  padding: 1.1em 0 0;
+}
+
+.inherobanner .caption ul li {
   color: #fff;
-  font-size: 48px;
-  font-weight: 700;
-  margin-bottom: 20px;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  font-weight: normal;
+  list-style-type: none;
+  padding: 0;
+  font-size: 22px;
+  display: inline-block;
+  text-align: center;
+  line-height: 25px;
 }
 
-.heroslides .caption .small-hr {
-  width: 80px;
-  border-color: #fff;
-  margin: 20px 0;
+.inherobanner .caption ul li + li {
+  margin-left: 0.9em;
 }
 
-/* Responsive adjustments */
-@media (max-width: 768px) {
-  .heroslides .slides {
-    min-height: 300px;
+/* Constrain icon images to small size */
+.inherobanner .owl-carousel ul li img {
+  width: auto;
+  max-width: 120px;
+  margin: auto auto 1.2em;
+}
+
+/* Responsive: tablet */
+@media only screen and (max-width: 1024px) {
+  .inherobanner .caption h2 {
+    font-size: 2.9em;
+    padding: 0.8em 0 0.6em 0;
   }
+  .inherobanner .caption h3 {
+    font-size: 2.1em;
+  }
+  .inherobanner .caption ul li {
+    font-size: 20px;
+  }
+  .inherobanner .owl-carousel ul li img {
+    max-width: 100px;
+    margin: auto auto 0.8em;
+  }
+}
 
-  .heroslides .caption h1 {
-    font-size: 32px;
+/* Responsive: mobile */
+@media only screen and (max-width: 767px) {
+  .inherobanner .caption h2 {
+    font-size: 2em;
+  }
+  .inherobanner .caption h3 {
+    font-size: 1.5em;
+  }
+  .inherobanner .caption ul li {
+    font-size: 1.1em;
+  }
+  .inherobanner .owl-carousel ul li img {
+    max-width: 70px;
+    margin: 0;
   }
 }
