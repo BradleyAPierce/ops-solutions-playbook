@@ -70,8 +70,15 @@
   }
 
   function initComponents() {
-    loadComponent("header-container", "components/header.html");
-    loadComponent("nav-container", "components/nav.html");
-    loadComponent("footer-container", "components/footer.html");
+    // Detect if we need relative paths based on URL depth
+    const pathDepth =
+      window.location.pathname
+        .split("/")
+        .filter((p) => p && !p.endsWith(".html")).length - 1;
+    const basePath = pathDepth > 0 ? "../".repeat(pathDepth) : "";
+
+    loadComponent("header-container", `${basePath}components/header.html`);
+    loadComponent("nav-container", `${basePath}components/nav.html`);
+    loadComponent("footer-container", `${basePath}components/footer.html`);
   }
 })();
