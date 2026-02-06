@@ -70,8 +70,8 @@
   }
 
   function initComponents() {
-    loadComponent("header-container", "/components/header.html");
-    loadComponent("nav-container", "/components/nav.html");
-    loadComponent("footer-container", "/components/footer.html");
+    loadComponent("header-container", "components/header.html");
+    loadComponent("nav-container", "components/nav.html");
+    loadComponent("footer-container", "components/footer.html");
   }
 })();
